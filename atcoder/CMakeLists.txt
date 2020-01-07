@@ -35,5 +35,6 @@ set_target_properties(atcoder-templete PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${ATCODER_BIN_DIR})
 
 add_subdirectory(abc097)
+add_subdirectory(abc098)
 add_subdirectory(abc103)
 add_subdirectory(abc131)
