@@ -1,6 +1,6 @@
 set(EXECUTABLE_TARGETS "")
 
-add_executable(c c.cc)
+add_executable(d d.cc)
 list(APPEND EXECUTABLE_TARGETS c)
 
 foreach(EXECUTABLE_TARGET IN LISTS EXECUTABLE_TARGETS)
