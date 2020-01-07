@@ -3,22 +3,42 @@
 #include <algorithm>
 #include <iostream>
 #include <numeric>
+#include <vector>
 using namespace std;
+using default_counter_t = int;
 
 // macro
 #define let auto const&
 #define overload4(a, b, c, d, name, ...) name
-#define rep1(n) for (int i = 0, end_i = (n); i < end_i; ++i)
-#define rep2(i, n) for (int i = 0, end_##i = (n); i < end_##i; ++i)
-#define rep3(i, a, b) for (int i = (a), end_##i = (b); i < end_##i; ++i)
-#define rep4(i, a, b, c) for (int i = (a), end_##i; i < end_##i; i += (c))
+#define rep1(n) \
+  for (default_counter_t i = 0, end_i = default_counter_t(n); i < end_i; ++i)
+#define rep2(i, n)                                                           \
+  for (default_counter_t i = 0, end_##i = default_counter_t(n); i < end_##i; \
+       ++i)
+#define rep3(i, a, b)                                    \
+  for (default_counter_t i       = default_counter_t(a), \
+                         end_##i = default_counter_t(b); \
+       i < end_##i; ++i)
+#define rep4(i, a, b, c)                                 \
+  for (default_counter_t i       = default_counter_t(a), \
+                         end_##i = default_counter_t(b); \
+       i < end_##i; i += default_counter_t(c))
 #define rep(...) overload4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)
-#define rrep1(n) for (int i = (n)-1; i >= 0; --i)
-#define rrep2(i, n) for (int i = (n)-1; i >= 0; --i)
-#define rrep3(i, a, b) for (int i = (b)-1, begin_##i = (a); i >= begin_##i; --i)
-#define rrep4(i, a, b, c)                                        \
-  for (int i = ((b) - (a)-1) / (c) * (c) + (a), begin_##i = (a); \
-       i >= begin_##i; i -= c)
+
+#define rrep1(n) \
+  for (default_counter_t i = default_counter_t(n) - 1; i >= 0; --i)
+#define rrep2(i, n) \
+  for (default_counter_t i = default_counter_t(n) - 1; i >= 0; --i)
+#define rrep3(i, a, b)                                         \
+  for (default_counter_t i         = default_counter_t(b) - 1, \
+                         begin_##i = default_counter_t(a);     \
+       i >= begin_##i; --i)
+#define rrep4(i, a, b, c)                                          \
+  for (int i = (default_counter_t(b) - default_counter_t(a) - 1) / \
+                   default_counter_t(c) * default_counter_t(c) +   \
+               default_counter_t(a),                               \
+           begin_##i = default_counter_t(a);                       \
+       i >= begin_##i; i -= default_counter_t(c))
 #define rrep(...) \
   overload4(__VA_ARGS__, rrep4, rrep3, rrep2, rrep1)(__VA_ARGS__)
 
@@ -73,8 +93,14 @@ void In(void) { return; }
 template <typename First, typename... Rest>
 void In(First& first, Rest&... rest) {
   cin >> first;
-  IN(rest...);
+  In(rest...);
   return;
+}
+
+template <class T, typename I>
+void VectorIn(vector<T>& v, const I n) {
+  v.resize(size_t(n));
+  rep(i, v.size()) cin >> v[i];
 }
 
 void Out(void) {
@@ -85,13 +111,13 @@ void Out(void) {
 template <typename First, typename... Rest>
 void Out(First first, Rest... rest) {
   cout << first << " ";
-  OUT(rest...);
+  Out(rest...);
   return;
 }
 
-constexpr auto yes(bool const& c) { return c ? "yes" : "no"; }
-constexpr auto Yes(bool const& c) { return c ? "Yes" : "No"; }
-constexpr auto YES(bool const& c) { return c ? "YES" : "NO"; }
+constexpr auto yes(const bool c) { return c ? "yes" : "no"; }
+constexpr auto Yes(const bool c) { return c ? "Yes" : "No"; }
+constexpr auto YES(const bool c) { return c ? "YES" : "NO"; }
 
 #ifdef USE_STACK_TRACE_LOGGER
 #ifdef __clang__
