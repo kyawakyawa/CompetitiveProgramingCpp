@@ -30,5 +30,6 @@ target_compile_definitions(atcoder-templete PRIVATE
   $<$<CXX_COMPILER_ID:GCC>:  ${ATCODER_GCC_DEFINITIONS}>
   $<$<CXX_COMPILER_ID:MSVC>: ${ATCODER_MSVC_DEFINITIONS}>)
 
+add_subdirectory(abc097)
 add_subdirectory(abc103)
 add_subdirectory(abc131)
