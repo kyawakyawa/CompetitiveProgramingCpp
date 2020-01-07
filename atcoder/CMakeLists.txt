@@ -1,0 +1,19 @@
+set(ATCODER_CLANG_WARNING_FLAGS
+  -Wall -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-unused-macros -Wno-missing-prototypes)
+set(ATCODER_GCC_WARNING_FLAGS
+  -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-unused)
+set(ATCODER_MSVC_WARNING_FLAGS /W4)
+
+set(ATCODER_LINK_LIBRARIES "glog::glog")
+
+set(ATCODER_COMPILE_FEATURES "cxx_std_17")
+
+add_executable(atcoder-templete atcoder-templete.cc)
+target_link_libraries(atcoder-templete PRIVATE ${ATCODER_LINK_LIBRARIES})
+target_compile_options(atcoder-templete PRIVATE
+  $<$<CXX_COMPILER_ID:Clang>:${ATCODER_CLANG_WARNING_FLAGS}>
+  $<$<CXX_COMPILER_ID:GCC>:  ${ATCODER_GCC_WARNING_FLAGS}>
+  $<$<CXX_COMPILER_ID:MSVC>: ${ATCODER_MSVC_WARNING_FLAGS}>)
+target_compile_features(atcoder-templete PRIVATE ${ATCODER_COMPILE_FEATURES})
+
+add_subdirectory(abc131)
