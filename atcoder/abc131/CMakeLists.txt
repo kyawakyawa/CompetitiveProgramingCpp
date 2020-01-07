@@ -1,7 +1,7 @@
 set(EXECUTABLE_TARGETS "")
 
-add_executable(d d.cc)
-list(APPEND EXECUTABLE_TARGETS c)
+add_executable(abc131d d.cc)
+list(APPEND EXECUTABLE_TARGETS abc131d)
 
 foreach(EXECUTABLE_TARGET IN LISTS EXECUTABLE_TARGETS)
   target_link_libraries(${EXECUTABLE_TARGET} PRIVATE ${ATCODER_LINK_LIBRARIES})
