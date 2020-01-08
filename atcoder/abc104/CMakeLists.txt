@@ -2,6 +2,8 @@ set(EXECUTABLE_TARGETS "")
 
 add_executable(abc104c c.cc)
 list(APPEND EXECUTABLE_TARGETS abc104c)
+add_executable(abc104d d.cc)
+list(APPEND EXECUTABLE_TARGETS abc104d)
 
 foreach(EXECUTABLE_TARGET IN LISTS EXECUTABLE_TARGETS)
   target_link_libraries(${EXECUTABLE_TARGET} PRIVATE ${ATCODER_LINK_LIBRARIES})
