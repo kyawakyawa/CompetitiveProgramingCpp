@@ -37,4 +37,5 @@ set_target_properties(atcoder-templete PROPERTIES
 add_subdirectory(abc097)
 add_subdirectory(abc098)
 add_subdirectory(abc103)
+add_subdirectory(abc104)
 add_subdirectory(abc131)
