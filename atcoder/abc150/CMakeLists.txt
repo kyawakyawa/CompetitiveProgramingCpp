@@ -4,6 +4,8 @@ add_executable(abc150c c.cc)
 list(APPEND EXECUTABLE_TARGETS abc150c)
 add_executable(abc150d d.cc)
 list(APPEND EXECUTABLE_TARGETS abc150d)
+add_executable(abc150e e.cc)
+list(APPEND EXECUTABLE_TARGETS abc150e)
 
 foreach(EXECUTABLE_TARGET IN LISTS EXECUTABLE_TARGETS)
   target_link_libraries(${EXECUTABLE_TARGET} PRIVATE ${ATCODER_LINK_LIBRARIES})
