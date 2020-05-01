@@ -50,3 +50,4 @@ else()
 endif()
 
 add_subdirectory(atcoder)
+add_subdirectory(library)
