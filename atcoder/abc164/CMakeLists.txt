@@ -1,5 +1,7 @@
 set(EXECUTABLE_TARGETS "")
 
+add_executable(abc164d d.cc)
+list(APPEND EXECUTABLE_TARGETS abc164d)
 add_executable(abc164e e.cc)
 list(APPEND EXECUTABLE_TARGETS abc164e)
 
