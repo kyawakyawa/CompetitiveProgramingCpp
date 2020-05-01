@@ -1,10 +1,5 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)
 project(CompetitiveProgramingCpp LANGUAGES CXX C)
-
-#Enable Policy CMP0076
-cmake_policy(SET CMP0076 NEW)
-#Enable Policy CMP0077
-cmake_policy(SET CMP0077 NEW)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
