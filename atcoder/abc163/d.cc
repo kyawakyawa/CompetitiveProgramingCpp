@@ -1,4 +1,3 @@
-#include <stdint.h>
 #include <stdlib.h>
 
 #include <algorithm>
@@ -35,8 +34,7 @@ using default_counter_t = int64_t;
                          begin_##i = default_counter_t(a);     \
        i >= begin_##i; --i)
 #define rrep4(i, a, b, c)                                          \
-  for (default_counter_t                                           \
-           i = (default_counter_t(b) - default_counter_t(a) - 1) / \
+  for (int i = (default_counter_t(b) - default_counter_t(a) - 1) / \
                    default_counter_t(c) * default_counter_t(c) +   \
                default_counter_t(a),                               \
            begin_##i = default_counter_t(a);                       \
@@ -138,5 +136,26 @@ signed main(int argc, char* argv[]) {
 #else
   (void)argv;
 #endif  // USE_STACK_TRACE_LOGGER
+
+  int64_t n, k;
+  cin >> n >> k;
+  int64_t mod = 1000000007;
+
+  int64_t ans = 0;
+  rep(i, k, n + 2) {
+    int64_t tmp = i * (i - 1) / 2;
+    tmp %= mod;
+
+    int64_t tmp2 = (2 * n - i + 1) * i / 2;
+    tmp2 %= mod;
+
+    ans += tmp2 - tmp + 1;
+    if (ans >= 0) {
+      ans %= mod;
+    } else {
+      ans = ans + mod;
+    }
+  }
+  printf("%ld\n", ans);
   return EXIT_SUCCESS;
 }
