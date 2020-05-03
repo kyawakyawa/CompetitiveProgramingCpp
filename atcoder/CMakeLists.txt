@@ -61,3 +61,5 @@ add_subdirectory(abc165)
 add_subdirectory(agc029)
 add_subdirectory(agc040)
 add_subdirectory(agc043)
+
+add_subdirectory(smtb2019)
