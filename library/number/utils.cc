@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <algorithm>
 #include <map>
 #include <vector>
 using namespace std;
@@ -20,6 +21,19 @@ map<T, T> PrimeFactor(T n) {
   }
   if (n != 1) ret[n] = 1;
   return ret;
+}
+
+template <typename T>
+vector<T> Divisor(const T n) {
+  vector<T> ret;
+  for (int64_t i = 1; i * i <= n; i++) {
+    if (n % i == 0) {
+      ret.emplace_back(i);
+      if (i * i != n) ret.emplace_back(n / i);
+    }
+  }
+  sort(begin(ret), end(ret));
+  return (ret);
 }
 
 #ifdef USE_STACK_TRACE_LOGGER
