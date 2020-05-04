@@ -143,7 +143,7 @@ signed main(int argc, char* argv[]) {
   int64_t a   = 100;
   int64_t cnt = 0;
   while (a < x) {
-    a = int64_t(a * 1.01);
+    a = int64_t(double(a) * 1.01);
     cnt++;
   }
   printf("%ld\n", cnt);

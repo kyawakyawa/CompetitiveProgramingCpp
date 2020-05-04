@@ -177,6 +177,6 @@ signed main(int argc, char* argv[]) {
       return EXIT_SUCCESS;
     }
   }
-  Out(int64_t(double(m) / (2 * l) + 0.50000001));
+  Out(int64_t(double(m) / (2.0 * double(l)) + 0.50000001));
   return EXIT_SUCCESS;
 }
