@@ -8,7 +8,7 @@ set(PROBLEMS "")
 #list(APPEND PROBLEMS c)
 list(APPEND PROBLEMS d)
 #list(APPEND PROBLEMS e)
-#list(APPEND PROBLEMS f)
+list(APPEND PROBLEMS f)
 
 foreach(PROBLEM IN LISTS PROBLEMS)
   add_executable(${CONTEST_NAME}${PROBLEM} ${PROBLEM}.cc)

@@ -21,3 +21,23 @@ map<T, T> PrimeFactor(T n) {
   if (n != 1) ret[n] = 1;
   return ret;
 }
+
+#ifdef USE_STACK_TRACE_LOGGER
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
+#include <glog/logging.h>
+#pragma clang diagnostic pop
+#endif  //__clang__
+#endif  // USE_STACK_TRACE_LOGGER
+
+signed main(int argc, char* argv[]) {
+  (void)argc;
+#ifdef USE_STACK_TRACE_LOGGER
+  google::InitGoogleLogging(argv[0]);
+  google::InstallFailureSignalHandler();
+#else
+  (void)argv;
+#endif  // USE_STACK_TRACE_LOGGER
+  return EXIT_SUCCESS;
+}
