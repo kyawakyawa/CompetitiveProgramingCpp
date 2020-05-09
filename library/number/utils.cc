@@ -6,9 +6,25 @@
 using namespace std;
 
 template <typename T>
+T ModPow(T x, T n, const T& p) {
+  T ret = 1;
+  while (n > 0) {
+    if (n & 1) (ret *= x) %= p;
+    (x *= x) %= p;
+    n >>= 1;
+  }
+  return ret;
+}
+
+template <typename T>
 T Gcd(const T a, const T b) {
   if (b == 0) return a;
   return Gcd(b, a % b);
+}
+
+template <typename T>
+T Lcm(const T a, const T b) {
+  return a / Gcd(a, b) * b;
 }
 
 template <typename T>
