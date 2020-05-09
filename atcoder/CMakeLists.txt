@@ -75,4 +75,6 @@ add_subdirectory(agc031)
 add_subdirectory(agc040)
 add_subdirectory(agc043)
 
+add_subdirectory(code-festival-2014-easy)
+
 add_subdirectory(smtb2019)
