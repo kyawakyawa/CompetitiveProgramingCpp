@@ -76,6 +76,8 @@ add_subdirectory(abc165)
 add_subdirectory(abc166)
 add_subdirectory(abc167)
 
+add_subdirectory(arc022)
+
 add_subdirectory(agc029)
 add_subdirectory(agc031)
 add_subdirectory(agc040)
