@@ -50,4 +50,5 @@ else()
 endif()
 
 add_subdirectory(atcoder)
+add_subdirectory(yukicoder)
 add_subdirectory(library)
