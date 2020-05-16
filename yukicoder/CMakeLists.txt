@@ -25,6 +25,7 @@ set(SITE_NAME yukicoder)
 set(PROBLEM_NOS "")
 
 list(APPEND PROBLEM_NOS 1046)
+list(APPEND PROBLEM_NOS 1052)
 
 foreach(PROBLEM_NO IN LISTS PROBLEM_NOS)
   add_executable(${SITE_NAME}${PROBLEM_NO} ${PROBLEM_NO}.cc)
