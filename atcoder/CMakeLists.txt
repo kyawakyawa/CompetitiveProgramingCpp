@@ -93,4 +93,6 @@ add_subdirectory(agc043)
 add_subdirectory(code-festival-2014-easy)
 add_subdirectory(code-formula-2014-qualifying)
 
+add_subdirectory(digital-arts2012)
+
 add_subdirectory(smtb2019)
