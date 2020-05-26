@@ -19,6 +19,8 @@ endif()
 
 set(LIBRARY_COMPILE_FEATURES "cxx_std_17")
 
+add_executable(lis dp/lis.cc)
+list(APPEND EXECUTABLE_TARGETS lis)
 add_executable(dijkstra graph/dijkstra.cc)
 list(APPEND EXECUTABLE_TARGETS dijkstra)
 
