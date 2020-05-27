@@ -101,4 +101,6 @@ add_subdirectory(cf_2015_morning_easy)
 
 add_subdirectory(digital-arts2012)
 
+add_subdirectory(donuts-2015)
+
 add_subdirectory(smtb2019)
