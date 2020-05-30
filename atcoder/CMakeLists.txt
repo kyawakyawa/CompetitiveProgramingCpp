@@ -105,6 +105,8 @@ add_subdirectory(digital-arts2012)
 
 add_subdirectory(donuts-2015)
 
+add_subdirectory(nomura2020)
+
 add_subdirectory(smtb2019)
 
 add_subdirectory(soundhound2018-summer-qual)
