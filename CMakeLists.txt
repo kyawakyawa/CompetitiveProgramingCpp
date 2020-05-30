@@ -49,6 +49,8 @@ else()
     message(STATUS "Stack trace logger: DISABLED")
 endif()
 
+add_subdirectory(aoj)
 add_subdirectory(atcoder)
 add_subdirectory(yukicoder)
+
 add_subdirectory(library)
