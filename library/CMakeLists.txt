@@ -19,6 +19,8 @@ endif()
 
 set(LIBRARY_COMPILE_FEATURES "cxx_std_17")
 
+add_executable(coordinate-compress coordinate-compress/coordinate-compress.cc)
+list(APPEND EXECUTABLE_TARGETS coordinate-compress)
 add_executable(lis dp/lis.cc)
 list(APPEND EXECUTABLE_TARGETS lis)
 add_executable(dijkstra graph/dijkstra.cc)
