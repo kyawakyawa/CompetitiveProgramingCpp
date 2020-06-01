@@ -24,7 +24,10 @@ set(SITE_NAME aoj)
 
 set(PROBLEM_NOS "")
 
+list(APPEND PROBLEM_NOS DSL_4_A)
+
 list(APPEND PROBLEM_NOS ITP1_7_B)
+
 
 foreach(PROBLEM_NO IN LISTS PROBLEM_NOS)
   add_executable(${SITE_NAME}${PROBLEM_NO} ${PROBLEM_NO}.cc)
