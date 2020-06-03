@@ -20,18 +20,18 @@ endif()
 
 set(ATCODER_COMPILE_FEATURES "cxx_std_17")
 
-add_executable(atcoder-templete atcoder-templete.cc)
-target_link_libraries(atcoder-templete PRIVATE ${ATCODER_LINK_LIBRARIES})
-target_compile_options(atcoder-templete PRIVATE
+add_executable(atcoder-template atcoder-template.cc)
+target_link_libraries(atcoder-template PRIVATE ${ATCODER_LINK_LIBRARIES})
+target_compile_options(atcoder-template PRIVATE
   $<$<CXX_COMPILER_ID:Clang>:${ATCODER_CLANG_WARNING_FLAGS}>
   $<$<CXX_COMPILER_ID:GCC>:  ${ATCODER_GCC_WARNING_FLAGS}>
   $<$<CXX_COMPILER_ID:MSVC>: ${ATCODER_MSVC_WARNING_FLAGS}>)
-target_compile_features(atcoder-templete PRIVATE ${ATCODER_COMPILE_FEATURES})
-target_compile_definitions(atcoder-templete PRIVATE
+target_compile_features(atcoder-template PRIVATE ${ATCODER_COMPILE_FEATURES})
+target_compile_definitions(atcoder-template PRIVATE
   $<$<CXX_COMPILER_ID:Clang>:${ATCODER_CLANG_DEFINITIONS}>
   $<$<CXX_COMPILER_ID:GCC>:  ${ATCODER_GCC_DEFINITIONS}>
   $<$<CXX_COMPILER_ID:MSVC>: ${ATCODER_MSVC_DEFINITIONS}>)
-set_target_properties(atcoder-templete PROPERTIES
+set_target_properties(atcoder-template PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${ATCODER_BIN_DIR})
 
 add_subdirectory(abc021)
