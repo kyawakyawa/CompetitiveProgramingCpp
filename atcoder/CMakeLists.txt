@@ -109,6 +109,8 @@ add_subdirectory(digital-arts2012)
 
 add_subdirectory(donuts-2015)
 
+add_subdirectory(edpc)
+
 add_subdirectory(joi2007ho)
 
 add_subdirectory(nomura2020)
