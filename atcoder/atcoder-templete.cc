@@ -121,6 +121,36 @@ constexpr auto yes(const bool c) { return c ? "yes" : "no"; }
 constexpr auto Yes(const bool c) { return c ? "Yes" : "No"; }
 constexpr auto YES(const bool c) { return c ? "YES" : "NO"; }
 
+// http://koturn.hatenablog.com/entry/2018/08/01/010000
+template <typename T, typename U>
+static inline std::vector<U> MakeNdVector(T&& n, U&& val) noexcept {
+  static_assert(std::is_integral<T>::value,
+                "[MakeNdVector] The 1st argument must be an integer");
+  return std::vector<U>(std::forward<T>(n), std::forward<U>(val));
+}
+
+template <typename T, typename... Args>
+static inline decltype(auto) MakeNdVector(T&& n, Args&&... args) noexcept {
+  static_assert(std::is_integral<T>::value,
+                "[MakeNdVector] The 1st argument must be an integer");
+  return std::vector<decltype(MakeNdVector(std::forward<Args>(args)...))>(
+      std::forward<T>(n), MakeNdVector(std::forward<Args>(args)...));
+}
+
+template <typename T, std::size_t N,
+          typename std::enable_if<(N > 0), std::nullptr_t>::type = nullptr>
+struct NdvectorImpl {
+  using type = std::vector<typename NdvectorImpl<T, N - 1>::type>;
+};  // struct ndvector_impl
+
+template <typename T>
+struct NdvectorImpl<T, 1> {
+  using type = std::vector<T>;
+};  // struct ndvector_impl
+
+template <typename T, std::size_t N>
+using NdVector = typename NdvectorImpl<T, N>::type;
+
 #ifdef USE_STACK_TRACE_LOGGER
 #ifdef __clang__
 #pragma clang diagnostic push
