@@ -123,7 +123,7 @@ constexpr auto YES(const bool c) { return c ? "YES" : "NO"; }
 
 // http://koturn.hatenablog.com/entry/2018/08/01/010000
 template <typename T, typename U>
-inline std::vector<U> MakeNdVector(T n, U&& val) noexcept {
+inline std::vector<U> MakeNdVector(T n, U val) noexcept {
   static_assert(std::is_integral<T>::value,
                 "[MakeNdVector] The 1st argument must be an integer");
   return std::vector<U>(std::forward<T>(n), std::forward<U>(val));
