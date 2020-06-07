@@ -5,6 +5,9 @@
 
 using namespace std;
 
+////////////////////////////////////////////////////////////////////////////
+#include <functional>
+
 template <typename Monoid>
 struct SegmentTree {
   using F = function<Monoid(Monoid, Monoid)>;
@@ -44,6 +47,7 @@ struct SegmentTree {
 #if 1
   // Note a, b -> 0-indexed
   //      a < b
+  //      if a == b: return e
   //      0 <= a < sz
   //      1 <= b <= sz
   //      sum in [a, b)
@@ -72,6 +76,7 @@ struct SegmentTree {
 
   Monoid operator[](const int64_t &k) const { return seg[k + sz]; }
 };
+////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
 
