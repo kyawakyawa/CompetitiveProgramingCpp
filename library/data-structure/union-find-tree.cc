@@ -28,21 +28,21 @@ struct UnionFind {
     }
   }
 
-  T find(T x) {  // xが属する集合の親を見つける
+  T Find(T x) {  // xが属する集合の親を見つける
     if (par[x] == x) {
       return x;
     } else {
-      return par[x] = find(par[x]);
+      return par[x] = Find(par[x]);
     }
   }
 
   T GetSetSize(T x) {  // xが属する集合の要素数を返す。
-    return usize[find(x)];
+    return usize[Find(x)];
   }
 
   void Unite(T x, T y) {  // xが属する集合とyが属する集合を併合する。
-    x = find(x);
-    y = find(y);
+    x = Find(x);
+    y = Find(y);
     if (x == y) return;
 
     T s = usize[x] + usize[y];
@@ -58,7 +58,7 @@ struct UnionFind {
   }
 
   bool Same(T x, T y) {  //同じ集合に属するかを判定する
-    return find(x) == find(y);
+    return Find(x) == Find(y);
   }
 
   T NumSet() {  //集合の数(木の数)を返す。
