@@ -172,9 +172,8 @@ signed main(int argc, char* argv[]) {
 #else
   (void)argv;
 #endif  // USE_STACK_TRACE_LOGGER
-  int64_t H, W, K, x1, x2, y1, y2;
-  In(H, W, K, x1, y1, x2, y2);
-  x1--;
+#if 0
+  int64_t H, W, K, x1, x2, y1, y2; In(H, W, K, x1, y1, x2, y2); x1--;
   y1--;
   x2--;
   y2--;
@@ -216,6 +215,79 @@ signed main(int argc, char* argv[]) {
   } else {
     cout << dist[x2][y2] << endl;
   }
+#else
+  int64_t H, W, K, x1, x2, y1, y2;
+  In(H, W, K, x1, y1, x2, y2);
+  x1--;
+  y1--;
+  x2--;
+  y2--;
+
+  vector<string> c(H);
+  rep(i, H) { In(c[i]); }
+
+  auto inside = [&](const int64_t x, const int64_t y) {
+    return (0 <= x && x < H && 0 <= y && y < W);
+  };
+
+  const int64_t kInf = numeric_limits<int64_t>::max() / 3;
+
+  using P  = pair<int64_t, int64_t>;
+  using Pp = pair<P, int64_t>;
+
+  auto dist = MakeNdVector(H, W, 4, kInf);
+
+  priority_queue<pair<int64_t, Pp>, vector<pair<int64_t, Pp>>,
+                 greater<pair<int64_t, Pp>>>
+      que;
+  que.emplace(0, Pp(P(x1, y1), 0));
+  que.emplace(0, Pp(P(x1, y1), 1));
+  que.emplace(0, Pp(P(x1, y1), 2));
+  que.emplace(0, Pp(P(x1, y1), 3));
+
+  dist[x1][y1][0] = 0;
+  dist[x1][y1][1] = 0;
+  dist[x1][y1][2] = 0;
+  dist[x1][y1][3] = 0;
+
+  while (!que.empty()) {
+    auto [d, pp] = que.top();
+    que.pop();
+    auto [xy, dir] = pp;
+    auto [x, y]    = xy;
+
+    rep(k, 4) {
+      int64_t x_ = x + dx[k];
+      int64_t y_ = y + dy[k];
+      if (!inside(x_, y_) || c[x_][y_] == '@') continue;
+      if (((k xor dir) & 1) == 0) {
+        if (ChMin(dist[x_][y_][k], dist[x][y][dir] + 1)) {
+          que.emplace(dist[x_][y_][k], Pp(P(x_, y_), k));
+        }
+      } else {
+        int64_t tmp = ((dist[x][y][dir] + K - 1) / K) * K;
+        if (ChMin(dist[x_][y_][k], tmp + 1)) {
+          que.emplace(dist[x_][y_][k], Pp(P(x_, y_), k));
+        }
+      }
+    }
+  }
+  bool flag = true;
+  rep(k, 4) {
+    if (dist[x2][y2][k] < kInf) {
+      flag = false;
+      break;
+    }
+  }
+  if (flag) {
+    cout << -1 << endl;
+  } else {
+    int64_t ans = kInf;
+    rep(k, 4) { ChMin(ans, ((dist[x2][y2][k] + K - 1) / K)); }
+    cout << ans << endl;
+  }
+
+#endif
 
   return EXIT_SUCCESS;
 }
