@@ -130,6 +130,7 @@ add_subdirectory(donuts-2015)
 add_subdirectory(edpc)
 
 add_subdirectory(joi2007ho)
+add_subdirectory(joi2008yo)
 
 add_subdirectory(nomura2020)
 
