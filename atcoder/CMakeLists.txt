@@ -137,6 +137,8 @@ add_subdirectory(pakencamp-2019-day3)
 
 add_subdirectory(smtb2019)
 
+add_subdirectory(s8pc-6)
+
 add_subdirectory(soundhound2018-summer-qual)
 
 add_subdirectory(tenka1-2013-qualb)
