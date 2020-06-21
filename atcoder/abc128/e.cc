@@ -212,6 +212,7 @@ signed main(int argc, char* argv[]) {
 #else
   (void)argv;
 #endif  // USE_STACK_TRACE_LOGGER
+#if 0
   int64_t N, Q;
   In(N, Q);
   vector<int64_t> S(N), T(N), X(N);
@@ -257,6 +258,46 @@ signed main(int argc, char* argv[]) {
   }
 
   rep(i, Q) { cout << xs[i] << endl; }
+
+#else
+
+  using Type  = pair<int64_t, int64_t>;
+  using Event = pair<int64_t, Type>;
+  int64_t N, Q;
+  cin >> N >> Q;
+  vector<Event> v;
+
+  for (int64_t i = 0; i < N; ++i) {
+    int64_t s, t, x;
+    cin >> s >> t >> x;
+    v.emplace_back(s - x, Type(-1, x));
+    v.emplace_back(t - x, Type(0, x));
+  }
+
+  for (int64_t i = 0; i < Q; ++i) {
+    int64_t d;
+    cin >> d;
+    v.emplace_back(d, Type(1, i));
+  }
+
+  sort(v.begin(), v.end());
+
+  vector<int64_t> ans(Q);
+  multiset<int64_t> se;
+
+  for (auto p : v) {
+    int64_t type = p.second.first;
+    int64_t val  = p.second.second;
+    if (type == -1)
+      se.insert(val);
+    else if (type == 0)
+      se.erase(se.lower_bound(val));
+    else
+      ans[val] = (se.empty() ? -1 : *(se.begin()));
+  }
+  for (auto a : ans) cout << a << endl;
+
+#endif
 
   return EXIT_SUCCESS;
 }
