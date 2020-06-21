@@ -169,6 +169,7 @@ signed main(int argc, char* argv[]) {
 #else
   (void)argv;
 #endif  // USE_STACK_TRACE_LOGGER
+#if 0
   int64_t N, M;
   In(N, M);
 
@@ -198,6 +199,33 @@ signed main(int argc, char* argv[]) {
     }
   }
   cout << accumulate(ans.begin(), ans.end(), int64_t(0)) << endl;
+#else
+  int64_t N, M;
+  cin >> N >> M;
+  vector<int64_t> T(M), L(M), R(M);
+  vector<vector<int64_t>> ins(N + 1), era(N + 1);
+  // ins[i] := i を区間の始点とするような時刻t の集まり.
+  // era[i] := i を区間の終点とするような時刻t の集まり.
+  for (int i = 0; i < M; ++i) {
+    cin >> T[i] >> L[i] >> R[i];
+    --L[i];
+    ins[L[i]].emplace_back(T[i]);
+    era[R[i]].emplace_back(T[i]);
+  }
+
+  set<int64_t> se;
+  se.insert(0);
+  int64_t ans = 0;
+  for (int64_t i = 0; i <= N; ++i) {
+    for (auto t : ins[i]) se.insert(t);
+    for (auto t : era[i]) se.erase(t);
+
+    ans += *prev(se.end());
+  }
+
+  cout << ans << endl;
+
+#endif
 
   return EXIT_SUCCESS;
 }
