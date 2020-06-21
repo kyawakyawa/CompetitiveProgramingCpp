@@ -134,6 +134,8 @@ add_subdirectory(edpc)
 add_subdirectory(joi2007ho)
 add_subdirectory(joi2008yo)
 
+add_subdirectory(nikkei2019-final)
+
 add_subdirectory(nomura2020)
 
 add_subdirectory(pakencamp-2019-day3)
