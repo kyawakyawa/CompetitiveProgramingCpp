@@ -1,3 +1,4 @@
+#include <functional>
 #include <iostream>
 using namespace std;
 
@@ -18,13 +19,13 @@ bool C(T x) {
 }
 
 template <typename T>
-T LowerBound(T s, T t, bool (*comp)(T x) = C) {
+T LowerBound(T s, T t, function<bool(T)> Comp = C<T>) {
   T lb = s - 1, ub = t;
 
   while (ub - lb > 1) {
     T mid = (ub + lb) / 2;  // ub lb がともに大きい時オーバフローするので注意
 
-    ((*comp)(mid) ? ub : lb) = mid;
+    (Comp(mid) ? ub : lb) = mid;
   }
 
   return ub;  // ub = t のときはすべてfalse
