@@ -9,9 +9,9 @@ template <typename T>
 T ModPow(T x, T n, const T& p) {
   T ret = 1;
   while (n > 0) {
-    if (n & 1) (ret *= x) %= p;
+    if (n & T(1)) (ret *= x) %= p;
     (x *= x) %= p;
-    n >>= 1;
+    n >>= T(1);
   }
   return ret;
 }
