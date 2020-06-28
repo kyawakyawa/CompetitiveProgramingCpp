@@ -158,3 +158,4 @@ add_subdirectory(tenka1-2013-qualb)
 add_subdirectory(tokiomarine2020)
 
 add_subdirectory(yahoo-procon2019-qual)
+add_subdirectory(yahoo-procon2018-final)
