@@ -20,6 +20,7 @@ endif()
 
 set(CODEFORCES_COMPILE_FEATURES "cxx_std_17")
 
+add_subdirectory(cf-round198)
 add_subdirectory(cf-round646)
 
 add_subdirectory(edu-cf-round060)
