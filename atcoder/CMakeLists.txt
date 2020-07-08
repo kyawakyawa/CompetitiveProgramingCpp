@@ -149,6 +149,8 @@ add_subdirectory(joi2007ho)
 add_subdirectory(joi2008yo)
 add_subdirectory(joi2009ho)
 
+add_subdirectory(joisc2007)
+
 add_subdirectory(nikkei2019-final)
 
 add_subdirectory(nomura2020)
