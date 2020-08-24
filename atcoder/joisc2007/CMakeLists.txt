@@ -4,6 +4,7 @@ set(CONTEST_NAME joisc2007)
 
 set(PROBLEMS "")
 list(APPEND PROBLEMS fermat)
+list(APPEND PROBLEMS route)
 
 foreach(PROBLEM IN LISTS PROBLEMS)
   add_executable(${CONTEST_NAME}${PROBLEM} ${PROBLEM}.cc)
