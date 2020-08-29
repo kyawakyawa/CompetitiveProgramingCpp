@@ -161,6 +161,7 @@ add_subdirectory(edpc)
 
 add_subdirectory(joi2007ho)
 add_subdirectory(joi2008yo)
+add_subdirectory(joi2008ho)
 add_subdirectory(joi2009ho)
 
 add_subdirectory(joisc2007)
