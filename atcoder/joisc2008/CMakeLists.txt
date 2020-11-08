@@ -4,6 +4,7 @@ set(CONTEST_NAME joisc2008)
 
 set(PROBLEMS "")
 list(APPEND PROBLEMS committee)
+list(APPEND PROBLEMS sheet)
 
 foreach(PROBLEM IN LISTS PROBLEMS)
   add_executable(${CONTEST_NAME}${PROBLEM} ${PROBLEM}.cc)
