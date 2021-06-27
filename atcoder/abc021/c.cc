@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <limits>
 #include <numeric>
 #include <queue>
 #include <vector>
@@ -94,7 +95,7 @@ constexpr bool ChMin(T &a, T const &b) {
 void In(void) { return; }
 
 template <typename First, typename... Rest>
-void In(First &first, Rest &... rest) {
+void In(First &first, Rest &...rest) {
   cin >> first;
   In(rest...);
   return;
