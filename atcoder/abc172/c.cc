@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <deque>
+#include <functional>
 #include <iostream>
 #include <numeric>
 #include <vector>
